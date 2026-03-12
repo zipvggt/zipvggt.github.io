@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Zip-VGGT</title>
+        <link rel="icon" type="image/x-icon" href="/static/img/ButtleFly.ico">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Open Graph -->
+        <meta property="og:url" content="https://zipvggt.github.io/" />
+        <meta property="og:image" content="https://zipvggt.github.io/static/img/teaser.png" />
+        <meta property="og:title" content="Zip-VGGT: Object-Centric Spatiotemporal KV Compression for Streaming Vision Transformers" />
+        <meta property="og:description" content="Zip-VGGT proposes object-centric spatiotemporal KV compression for bounded-memory, long-horizon streaming 4D perception." />
+
+        <!-- Twitter -->
+        <meta name="twitter:url" content="https://zipvggt.github.io/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://zipvggt.github.io/static/img/teaser.png" />
+        <meta name="twitter:title" content="Zip-VGGT: Object-Centric Spatiotemporal KV Compression for Streaming Vision Transformers" />
+        <meta name="twitter:description" content="Zip-VGGT proposes object-centric spatiotemporal KV compression for bounded-memory, long-horizon streaming 4D perception." />
+
+        <script src="./static/js/distill_template.v2.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://d3js.org/d3-collection.v1.min.js"></script>
+        <script src="https://rawgit.com/nstrayer/slid3r/master/dist/slid3r.js"></script>
+
+        <script defer="" src="./static/js/hider.js"></script>
+        <script src="./static/js/image_interact.js"></script>
+        <script src="./static/js/switch_videos.js"></script>
+
+        <link rel="stylesheet" href="./static/css/style.css">
+        <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+
+        <!-- medium zoom https://github.com/francoischalifour/medium-zoom -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>  <!-- jquery -->
+        <script defer src="./static/js/medium-zoom.min.js"></script>
+        <script defer src="./static/js/zoom.js"></script>
+
+        <style>
+            .wider-centered-video {
+                width: 140%;
+                display: block;
+                margin-left: -20%;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            }
+
+            .comparison-pdf-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-top: 20px;
+                width: 112%;
+                margin-left: -6%;
+            }
+
+            .comparison-pdf-card {
+                background: #ffffff;
+                border: 1px solid #e5e7eb;
+                border-radius: 14px;
+                padding: 10px;
+                box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+            }
+
+            .comparison-image {
+                width: 100%;
+                border-radius: 10px;
+                background: #f8fafc;
+                display: block;
+            }
+
+            .comparison-pdf-title {
+                margin: 0 0 10px 0;
+                font-size: 1rem;
+                font-weight: 600;
+                color: #1f2937;
+            }
+
+            @media (max-width: 900px) {
+                .comparison-pdf-grid {
+                    width: 100%;
+                    margin-left: 0;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="header-wrapper">
+            <div class="header-container" id="header-container">
+                <div class="header-content">
+                    <h1 style="margin-top: 0px">
+                        <span style="font-size: 1.8em; display: block; margin-bottom: 0.3em; font-style: italic; font-family: 'Times New Roman', serif;">Zip-VGGT</span>
+                        <span style="font-size: 1.0em; display: block; color: #FFF7D4; font-family: 'Times New Roman', serif;">Object-Centric Spatiotemporal KV Compression for Streaming Vision Transformers</span>
+                    </h1>
+                    <div class="button-container">
+                        <!-- replace arxiv -->
+                        <a href="https://arxiv.org/abs/2512.03000" class="button paper-link" target="_blank">
+                            <span class="icon is-small">
+                                <i class="ai ai-arxiv "  style="height: 1.5em;"></i>
+                            </span>
+                            ArXiv
+                        </a>
+                        <!-- replace pdf -->
+                        <a href="https://openreview.net/pdf/20e248b44188f68a8b558c26ee62fcd5f2ac36c9.pdf" class="button paper-link" target="_blank">
+                            <span class="icon is-small"  style="height: 1.5em;">
+                                <i class="fas fa-file-pdf"></i>
+                            </span>
+                            <span>PDF</span>
+                        </a>
+                        <!-- replace image -->
+                        <a href="https://github.com/Dynamics-X/DynamicVerse" class="button" target="_blank">
+                            <span class="icon is-small"  style="height: 1.5em;">
+                                <i class="fab fa-github"></i>
+                            </span>
+                            <span>Code</span>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=0h7XysIpG8Y" class="button" target="_blank">
+                            <span class="icon is-small">
+                                <img src="https://www.logo.wine/a/logo/YouTube/YouTube-Icon-Full-Color-Logo.wine.svg" alt="Hugging Face logo" style="height: 1.5em;">
+                            </span>
+                            <span>Video</span>
+                        </a> 
+                        <a href="https://huggingface.co/datasets/kairunwen/DynamicVerse" class="button" target="_blank">
+                            <span class="icon is-small">
+                                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1.5em;">
+                            </span>
+                            <span>Dataset</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-image">
+                    <img draggable="false" src="static/img/zipvggt_logo.png" alt="Teaser Image" class="teaser-image">
+                </div>
+            </div>
+        </div>
+
+
+        <d-article>
+            <!-- </div> -->
+
+
+            <div id='teaser' class="sub-section">
+                <d-figure id="fig-studyadapter" >
+                    <figure>
+                        <img data-zoomable="" draggable="false" src="static/img/teaser.png" alt="Zip-VGGT Teaser">
+                    </figure>
+                </d-figure>
+            </div>
+            <div class="viewer-tip-panel tldr-wide-align" role="note" aria-label="TLDR" style="margin-top:0.6em; margin-bottom:22px;">
+                <div style="width:100%; background: #eef9ee; border-left: 5px solid #8acb8a; border-radius:10px; padding:12px 16px; box-shadow: 0 4px 12px rgba(66,133,244,0.06); box-sizing:border-box;">
+                    <div style="display:flex; align-items:flex-start;">
+                        <div style="flex:1">
+                            <p style="margin:0; color:#23303f; font-size:0.96em; line-height:1.4;">
+                                <strong style="color:#000; font-size:1em; font-weight:700;">TL;DR:</strong> Zip-VGGT is an object-centric spatiotemporal KV compression framework for streaming vision transformers that keeps memory bounded while preserving high-fidelity long-horizon 4D perception.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tldr-wide-align">
+                <ul style="width:100%; margin: 0; padding-left: 1.3em; color: #23303f; line-height: 1.45; box-sizing:border-box;">
+                    <li>We identify coupled failure modes in prior methods: boundary-agnostic spatial merging damages geometry, while motion-blind temporal eviction removes dynamic object trajectories.</li>
+                    <li>We introduce an <strong>object-centric memory mechanism</strong> plus three lightweight modules: RD-Lite budget allocation, dual-bank memory, and history-aware pose-query suppression.</li>
+                    <li>Across depth, pose, reconstruction, and efficiency evaluations, Zip-VGGT achieves strong compression and speed benefits while maintaining competitive geometric and temporal quality.</li>
+                </ul>
+            </div>
+
+        <div class="vision-block">  
+
+
+        <!-- <div id='demo_video' class="sub-section">
+            <h2 class="text">Teaser Video</h2>
+            <video autoplay loop muted playsinline style="width: 140%; display: block; margin: 0 auto; margin-left: -20%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                <source src="./static/img/xxx.mp4" type="video/mp4">
+            </video>
+            <p class="text">
+                This teaser highlights the core Zip-VGGT idea: under long-horizon streams, object-centric KV management controls memory growth while preserving dynamic structure and 3D geometry quality.
+            </p>
+        </div> -->
+
+        <div class="vision-block">
+            <div id="metrics" class="sub-section">
+            <h2 class="text">Motivation </h2>
+            <ul class="text" style="list-style-type: none; padding-left: 1.5rem;">
+                <li><b>🟩Unbounded Historical KV Cache:</b> memory and latency keep increasing with sequence length in streaming vision transformers.</li>
+                <li><b>🟩Boundary-Agnostic Spatial Compression:</b> token merging across physical entities corrupts fine 3D geometry and object boundaries.</li>
+                <li><b>🟩Motion-Blind Temporal Eviction:</b> naive pruning removes informative dynamic trajectories and hurts long-term 4D consistency.</li>
+            </ul>
+            </div>
+        </div>
+
+        <div id='dynamicgen_pipeline' class="sub-section">
+            <h2 class="text">Zip-VGGT Framework</h2>
+            <p class="text">
+                Zip-VGGT unifies spatial and temporal KV control with object-level memory states. It combines crisp 2D entity boundaries from lightweight SAM masks and implicit motion cues from backbone attention, then applies object-aware update, selection, and retrieval under a fixed cache budget.
+            </p>
+            <ul class="text" style="padding-left: 1.3rem;">
+                <li><strong>Object-Centric Memory Mechanism:</strong> We group historical tokens by objects, compute pooled object-query relevance, protect anchor tokens, and apply score-based compression to preserve semantically structured history under bounded memory.</li>
+                <li><strong>RD-Lite, Dual-Bank Memory, and Pose-query Suppression:</strong> RD-Lite allocates per-object budgets with a lightweight utility-cost objective; dual-bank memory separates static canonical content from dynamic residuals; and history-aware pose-query suppression improves pose robustness without harming geometry queries.</li>
+            </ul>
+            <d-figure id="fig-studyadapter" >
+                <figure>
+                    <img data-zoomable="" draggable="false" src="static/img/model_arch.png" alt="Zip-VGGT Framework">
+                </figure>
+            </d-figure>
+        </div>
+
+
+        <div id='dynamicverse_dataset' class="sub-section">
+            <h2 class="text">Comparison Results</h2>
+            <div class="comparison-pdf-grid">
+                <div class="comparison-pdf-card">
+                    <p class="comparison-pdf-title">Visualization Comparison 1</p>
+                    <img
+                        data-zoomable=""
+                        draggable="false"
+                        class="comparison-image"
+                        src="static/img/viz_comp_1.png"
+                        alt="Visualization Comparison 1">
+                </div>
+                <div class="comparison-pdf-card">
+                    <p class="comparison-pdf-title">Visualization Comparison 2</p>
+                    <img
+                        data-zoomable=""
+                        draggable="false"
+                        class="comparison-image"
+                        src="static/img/viz_comp_2.png"
+                        alt="Visualization Comparison 2">
+                </div>
+            </div>
+        </div>
+
+                
+        <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
+            <h1 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h1>
+            <p class="text">
+                Zip-VGGT formulates long-horizon streaming 4D perception as bounded-memory inference with coupled goals in memory efficiency, geometric fidelity, and dynamic continuity. By unifying object-centric memory organization with RD-Lite allocation, dual-bank retention, and history-aware pose-query suppression, the framework maintains stable streaming performance and avoids unbounded cache growth. The ablations show these modules are complementary, supporting object-centric memory management as an effective strategy for robust long-horizon streaming vision.
+            </p>
+        </div>
+
+        <!-- <div id="bibtex" style="position: relative; margin-top: 40px; margin-bottom: 40px; color: gray;">
+            <h2 class="text" style="margin-top:0px; margin-bottom:10px">BibTeX</h2>
+            
+            <pre style="white-space: pre-wrap; word-break: break-word; background-color: #f5f5f5; padding: 25px; border-radius: 12px; font-family: monospace; font-size: 0.9em; text-align: left; overflow-x: hidden; width: 200%; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+        
+
+            xxx
+
+            </pre>
+        </div> -->
+
+        <script src="./static/js/nav-bar.js"></script>
+    </body>
+</html>
