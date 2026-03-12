@@ -62,8 +62,8 @@
                 grid-template-columns: 1fr;
                 gap: 24px;
                 margin-top: 20px;
-                width: 112%;
-                margin-left: -6%;
+                width: 140%;
+                margin-left: -20%;
             }
 
             .comparison-pdf-card {
@@ -74,11 +74,20 @@
                 box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
             }
 
-            .comparison-image {
+            .comparison-pdf-card d-figure,
+            .comparison-pdf-card figure {
                 width: 100%;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .comparison-image {
+                width: 94%;
+                max-width: 94%;
                 border-radius: 10px;
                 background: #f8fafc;
                 display: block;
+                margin: 0 auto;
             }
 
             .comparison-pdf-title {
@@ -225,21 +234,29 @@
             <div class="comparison-pdf-grid">
                 <div class="comparison-pdf-card">
                     <p class="comparison-pdf-title">Visualization Comparison 1</p>
-                    <img
-                        data-zoomable=""
-                        draggable="false"
-                        class="comparison-image"
-                        src="static/img/viz_comp_1.png"
-                        alt="Visualization Comparison 1">
+                    <d-figure>
+                        <figure>
+                            <img
+                                data-zoomable=""
+                                draggable="false"
+                                class="comparison-image"
+                                src="static/img/viz_comp_1.png"
+                                alt="Visualization Comparison 1">
+                        </figure>
+                    </d-figure>
                 </div>
                 <div class="comparison-pdf-card">
                     <p class="comparison-pdf-title">Visualization Comparison 2</p>
-                    <img
-                        data-zoomable=""
-                        draggable="false"
-                        class="comparison-image"
-                        src="static/img/viz_comp_2.png"
-                        alt="Visualization Comparison 2">
+                    <d-figure>
+                        <figure>
+                            <img
+                                data-zoomable=""
+                                draggable="false"
+                                class="comparison-image"
+                                src="static/img/viz_comp_2.png"
+                                alt="Visualization Comparison 2">
+                        </figure>
+                    </d-figure>
                 </div>
             </div>
         </div>
