@@ -215,7 +215,7 @@
         <div id='dynamicgen_pipeline' class="sub-section">
             <h2 class="text">Zip-VGGT Framework</h2>
             <p class="text">
-                Zip-VGGT unifies spatial and temporal KV control with object-level memory states. It combines crisp 2D entity boundaries from lightweight SAM masks and implicit motion cues from backbone attention, then applies object-aware update, selection, and retrieval under a fixed cache budget.
+                Zip-VGGT unifies spatial and temporal KV control with object-level memory states. It combines crisp 2D entity boundaries from lightweight SAM masks with auxiliary motion cues, then applies object-aware update, selection, and retrieval under a fixed cache budget.
             </p>
             <ul class="text" style="padding-left: 1.3rem;">
                 <li><strong>Object-Centric Memory Mechanism:</strong> We group historical tokens by objects, compute pooled object-query relevance, protect anchor tokens, and apply score-based compression to preserve semantically structured history under bounded memory.</li>
